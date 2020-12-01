@@ -1,0 +1,5 @@
+{
+    "name": "GitHub tests",
+    "description": "execute tests on github actions",
+    "iconName": "github-test"
+}

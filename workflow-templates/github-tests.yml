@@ -1,0 +1,35 @@
+jobs:
+  Linting:
+    runs-on: ubuntu-latest
+    if: true
+    steps:
+      - uses: actions/checkout@v2
+      - run: set -xeuo pipefail
+      - name: Linting => ${{ github.ref }}
+        run: |
+          echo "linting the app"
+          npm run lint
+
+  GitHub-Testing:
+    if: truec
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        os: [ubuntu-18.04, ubuntu-latest, macos, macos-latest]
+        node-version: [12.x, 13.x]
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: set -xeuo pipefail
+
+      - name: Test on ${{ matrix.target }}
+        if: startsWith(matrix.os, 'ubuntu')
+        run: |
+          echo "running Linux tests"
+
+      - name: Test on ${{ matrix.target }}
+        if: startsWith(matrix.os, 'macos')
+        run: |
+          echo "running Mac tests"

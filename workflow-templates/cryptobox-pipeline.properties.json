@@ -1,0 +1,5 @@
+{
+    "name": "CryptoBox main pipeline",
+    "description": "CryptoBox main pipeline, to be used on both dev and prod",
+    "iconName": "cryptobox-pipeline"
+}
